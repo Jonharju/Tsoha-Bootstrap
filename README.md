@@ -7,5 +7,5 @@ Yleisiä linkkejä:
 
 ## Työn aihe
 
-Joukkueen hallintaan tarkoitettu ohjelma, jossa pelaajat voivat ilmoittautua tapahtumiin ja seurata omia tilastojaan.
+Joukkueen hallintaan tarkoitettu ohjelma, jossa pelaajat voivat ilmoittautua tapahtumiin ja seurata tilastojaan.
 
