@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Muokkaa profiilia</h1>
+
+  <form>
+    <div class="form-group">
+      <label>Lai</label>
+      <input class="form-control" value="Pelaajan nimi" type="text">
+    </div>
+    <div class="form-group">
+      <label>Pelipaikka</label>
+      <input class="form-control" value="11.11.2011" type="text">
+    </div>
+    <div class="form-group">
+      <label>Kätisyys</label>
+      <input class="form-control" value="Puoli" type="text">
+    </div>
+    <div class="form-group">
+      <label>Kuvaus</label>
+      <textarea class="form-control">        Pelaajaa kuvaava teksti tulee tähän
+      </textarea>
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">Tallenna</button>
+    </div>
+  </form>
+{% endblock %}
