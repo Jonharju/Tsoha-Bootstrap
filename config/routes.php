@@ -27,3 +27,11 @@ $routes->get('/team_show', function() {
 $routes->get('/team_players', function() {
     HelloWorldController::team_players();
   });
+
+$routes->get('/team_events', function() {
+    HelloWorldController::team_events();
+  });
+
+$routes->get('/event_show', function() {
+    HelloWorldController::event_show();
+  });

@@ -31,4 +31,12 @@
     public static function team_players(){
       View::make('suunnitelmat/team_players.html');
     }
+
+    public static function team_events(){
+      View::make('suunnitelmat/team_events.html');
+    }
+
+    public static function event_show(){
+      View::make('suunnitelmat/event_show.html');
+    }
   }

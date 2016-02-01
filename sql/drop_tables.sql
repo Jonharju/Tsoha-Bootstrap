@@ -1,1 +1,4 @@
 -- Lisää DROP TABLE lauseet tähän tiedostoon
+DROP TABLE IF EXISTS Joukkue CASCADE;
+DROP TABLE IF EXISTS Pelaaja CASCADE;
+DROP TABLE IF EXISTS Tapahtuma CASCADE;
