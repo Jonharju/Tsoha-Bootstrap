@@ -1,4 +1,5 @@
 <?php
+  
 
   class HelloWorldController extends BaseController{
 
@@ -9,7 +10,11 @@
 
     public static function sandbox(){
       // Testaa koodiasi täällä
-      View::make('helloworld.html');
+      $Teemu = Player::find(1);
+      $pelaajat = Player::all();
+      // Kint-luokan dump-metodi tulostaa muuttujan arvon
+      Kint::dump($pelaajat);
+      Kint::dump($Teemu);
     }
 
     public static function login(){

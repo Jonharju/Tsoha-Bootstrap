@@ -35,3 +35,24 @@ $routes->get('/team_events', function() {
 $routes->get('/event_show', function() {
     HelloWorldController::event_show();
   });
+
+$routes->get('/', function() {
+    PelaajaController::index();
+  });
+
+$routes->get('/pelaaja', function() {
+    PelaajaController::index();
+  });
+
+$routes->post('/pelaaja', function(){
+  PelaajaController::store();
+});
+
+$routes->get('/pelaaja/new', function(){
+  PelaajaController::create();
+});
+
+$routes->get('/pelaaja/:id', function($id) {
+    PelaajaController::show($id);
+  });
+
