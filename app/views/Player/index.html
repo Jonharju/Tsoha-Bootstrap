@@ -11,15 +11,15 @@
     </thead>
 
     <tbody>
-      {% for pelaaja in pelaajat %}
+      {% for player in players %}
       <tr>
-        <td><a href="{{base_path}}/pelaaja/{{pelaaja.id}}">{{pelaaja.nimi}}</a></td>
-        <th><a class="btn btn-default btn-sm" href="{{base.path}}/pelaaja/{{pelaaja.id}}/edit">Muokkaa</a></th>
+        <td><a href="{{base_path}}/player/{{player.id}}">{{player.name}}</a></td>
+        <th><a class="btn btn-default btn-sm" href="{{base_path}}/player/{{player.id}}/edit">Muokkaa</a></th>
       </tr>
       {% endfor %}
     </tbody>
   </table>
   <p>
-    <a href="{{base_path}}/pelaaja/new" class="btn btn-success">Lisää pelaaja</a>
+    <a href="{{base_path}}/player/new" class="btn btn-success">Lisää pelaaja</a>
   </p>
 {% endblock %}

@@ -16,13 +16,24 @@
     }
 
     public function errors(){
-      // Lisätään $errors muuttujaan kaikki virheilmoitukset taulukkona
       $errors = array();
-
-      foreach($this->validators as $validator){
-        // Kutsu validointimetodia tässä ja lisää sen palauttamat virheet errors-taulukkoon
+      foreach ($this->validators as $validator) {
+        $errors = array_merge($errors, $this->{$validator}());
       }
+      return $errors;
+    }
 
+    public function validate_string_length($field, $string, $min, $max){
+      $errors = array();
+      if(!is_string($string)) {
+        $errors[] = $field . "pitää olla merkkijono";
+      }
+      if(strlen($string) < $min && $min != 0) {
+        $errors[] = $field . " pitää olla vähintään " . $min . "merkkiä";
+      }
+      if(strlen($string) > $max && $max != 0) {
+        $errors[] = $field . " saa olla enintään " . $min . "merkkiä";
+      }
       return $errors;
     }
 

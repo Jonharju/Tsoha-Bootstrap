@@ -10,11 +10,12 @@
 
     public static function sandbox(){
       // Testaa koodiasi täällä
-      $Teemu = Player::find(1);
-      $pelaajat = Player::all();
+      $jatka = new Player(array(
+        'name' => 'asd',
+        'password' => '123'));
+      $errors = $jatka->errors();
       // Kint-luokan dump-metodi tulostaa muuttujan arvon
-      Kint::dump($pelaajat);
-      Kint::dump($Teemu);
+      Kint::dump($errors);
     }
 
     public static function login(){

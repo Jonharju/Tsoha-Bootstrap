@@ -1,23 +1,23 @@
 -- Lisää CREATE TABLE lauseet tähän tiedostoon
-CREATE TABLE Joukkue(
+CREATE TABLE Team(
 	id SERIAL PRIMARY KEY,
-	nimi varchar(30) NOT NULL,
-	perustamisvuosi INTEGER,
-	paikkakunta varchar(30)
+	name varchar(30) NOT NULL,
+	year INTEGER,
+	city varchar(30)
 );
 
-CREATE TABLE Pelaaja(
+CREATE TABLE Player(
 	id SERIAL PRIMARY KEY,
-	nimi varchar(30) NOT NULL,
-	salasana varchar(30) NOT NULL,
-	joukkue_id INTEGER REFERENCES Joukkue(id)
+	name varchar(30) NOT NULL,
+	password varchar(30) NOT NULL,
+	Team_id INTEGER REFERENCES Team(id)
 );
 
 
-CREATE TABLE Tapahtuma(
+CREATE TABLE Event(
 	id SERIAL PRIMARY KEY,
-	kuvaus varchar(30) NOT NULL,
-	aika DATE,
-	paikka varchar(30),
-	joukkue_id INTEGER REFERENCES Joukkue(id)
+	description varchar(30) NOT NULL,
+	time DATE,
+	place varchar(30),
+	Team_id INTEGER REFERENCES Team(id)
 );

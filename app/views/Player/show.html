@@ -6,12 +6,15 @@
         <th>Pelaajan nimi</th>
         <th>Pelaajan joukkue</th>
       </tr>
+      <form method="post" action="{{base_path}}/player/{{player.id}}/destroy" style="display: inline-block;">
+  <button type="submit" class="btn btn-danger">Poista</button>
+</form>
     </thead>
 
     <tbody>
       <tr>
-        <td>{{pelaaja.nimi}}</td>
-        <td>{{pelaaja.joukkue_id}}</td>
+        <td>{{player.name}}</td>
+        <td>{{player.team_id}}</td>
       </tr>
     </tbody>
   </table>
