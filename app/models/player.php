@@ -22,7 +22,7 @@ public static function all(){
     $query = DB::connection()->prepare('SELECT * FROM Player');
     $query->execute();
     $rows = $query->fetchAll();
-    $games = array();
+    $Player = array();
 
     foreach($rows as $row){
       $Player[] = new Player(array(
@@ -66,8 +66,6 @@ public static function all(){
     $query = DB::connection()->prepare('UPDATE Player SET name = :name, password = :password WHERE id = :id');
     $query->execute(array('id' => $this->id, 'name' => $this->name, 'password' => $this->password));
     $row = $query->fetch();
-
-    Kint::dump($row);
   }
 
   public function destroy(){
@@ -80,7 +78,7 @@ public static function all(){
     $query->execute(array('name' => $name, 'password' => $password));
     $row = $query->fetch();
     if($row){
-    $Player = new Player(array(
+      $Player = new Player(array(
         'id' => $row['id'],
         'name' => $row['name'],
         'password' => $row['password'],

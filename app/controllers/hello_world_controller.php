@@ -13,9 +13,10 @@
       $jatka = new Player(array(
         'name' => 'asd',
         'password' => '123'));
-      $errors = $jatka->errors();
+      //$errors = $jatka->errors();
       // Kint-luokan dump-metodi tulostaa muuttujan arvon
-      Kint::dump($errors);
+      $t = Player::authenticate('Teemu', 'joku123');
+      Kint::dump($t);
     }
 
     public static function login(){

@@ -18,13 +18,13 @@ class PlayerController extends BaseController{
       'name' => $params['name'],
       'password' => $params['password']
     ));
-    $errors = $Player->errors();
-    if(count($errors) != 0) {
-    	View::make('/player/new.html', array('errors' => $errors, 'player' => $Player));
-    } else {
+    //$errors = $Player->errors();
+    //if(count($errors) != 0) {
+    	//View::make('/Player/new.html', array('errors' => $errors, 'player' => $Player));
+    //} else {
     	$Player->save();
     	Redirect::to('/player/' . $Player->id, array('message' => 'Pelaaja luotu!'));
-	}
+	//}
 	}
 
 	public static function create(){
@@ -46,14 +46,14 @@ class PlayerController extends BaseController{
 		);
 
 		$Player = new Player($attributes);
-		$errors = $Player->errors();
+		//$errors = $Player->errors();
 
-		if(count($errors) != 0){
-			View::make('/player/edit.html', array('errors' => $errors, 'attributes' => $attributes));
-		} else{
+		//if(count($errors) != 0){
+			//View::make('/player/edit.html', array('errors' => $errors, 'attributes' => $attributes));
+		//} else{
 			$Player->update();
 			Redirect::to('/player/' . $Player->id, array('message' => 'Pelaajaa on muokattu onnistuneesti!'));
-		}
+		//}
 	}
 
 	public static function destroy($id){
@@ -63,14 +63,14 @@ class PlayerController extends BaseController{
   }
 
   public static function login(){
-  	View::make('/player/login.html');
+  	View::make('/Player/login.html');
   }
 
   public static function handle_login(){
   	$params = $_POST;
   	$Player = Player::authenticate($params['name'], $params['password']);
   	if(!$Player) {
-  		View::make('/player/login.html', array('error' => 'väärä käyttäjätunnus tai salasana'));
+  		View::make('Player/login.html', array('error' => 'väärä käyttäjätunnus tai salasana'));
   	} else {
   		$_SESSION['user'] = $Player->id; 
   		Redirect::to('/player', array('message' => 'Tervetuloa takaisin! ' .$Player->name));
