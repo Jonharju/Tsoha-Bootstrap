@@ -11,27 +11,26 @@
 </div>
 {% endif %}
 
-
-  <h1>Joukkueen pelaajat</h1>
+  <h1>Joukkueet</h1>
 
   <table class="table table-striped table-bordered">
     <thead>
       <tr>
-        <th>Pelaajan nimi</th>
+        <th>Joukkueen nimi</th>
         <th></th>
       </tr>
     </thead>
 
     <tbody>
-      {% for player in players %}
+      {% for team in teams %}
       <tr>
-        <td><a href="{{base_path}}/player/{{player.id}}">{{player.name}}</a></td>
-        <th><a class="btn btn-default btn-sm" href="{{base_path}}/player/{{player.id}}/edit">Muokkaa</a></th>
+        <td><a href="{{base_path}}/team/{{team.id}}">{{team.name}}</a></td>
+        <th><a class="btn btn-default btn-sm" href="{{base_path}}/team/{{team.id}}/edit">Muokkaa</a></th>
       </tr>
       {% endfor %}
     </tbody>
   </table>
   <p>
-    <a href="{{base_path}}/player/new" class="btn btn-success">Lisää pelaaja</a>
+    <a href="{{base_path}}/team/new" class="btn btn-success">Lisää joukkue</a>
   </p>
 {% endblock %}

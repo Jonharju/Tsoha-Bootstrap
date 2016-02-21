@@ -16,21 +16,26 @@
   {% endif %}
 
 
-  <h1>Muokkaa käyttäjää</h1>
+  <h1>Lisää joukkue</h1>
 
-  <form method="post" action="{{base_path}}/player/{{attributes.id}}/edit">
+  <form method="post" action="{{base_path}}/team">
     <div class="form-group">
       <label>Nimi</label>
       <input name="name" class="form-control" type="text">
     </div>
 
     <div class="form-group">
-      <label>Salasana</label>
-      <input name="password" class="form-control" type="text">
+      <label>Perustusvuosi</label>
+      <input name="year" class="form-control" type="text">
+    </div>
+
+     <div class="form-group">
+      <label>Kotikaupunki</label>
+      <input name="city" class="form-control" type="text">
     </div>
 
     <div class="form-group">
-      <button type="submit" class="btn btn-primary">Hyväksy muutokset</button>
+      <button type="submit" class="btn btn-primary">Lisää</button>
     </div>
   </form>
 {% endblock %}

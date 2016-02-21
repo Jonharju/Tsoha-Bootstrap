@@ -16,6 +16,10 @@ $routes->post('/login', function(){
   PlayerController::handle_login();
 });
 
+$routes->post('/logout', function(){
+  PlayerController::logout();
+});
+
 $routes->get('/player', function() {
     PlayerController::index();
   });
@@ -42,6 +46,34 @@ $routes->post('/player/:id/edit', function($id){
 
 $routes->post('/player/:id/destroy', function($id){
   PlayerController::destroy($id);
+});
+
+$routes->get('/team', function() {
+  TeamController::index();
+});
+
+$routes->post('/team', function(){
+  TeamController::store();
+});
+
+$routes->get('/team/new', function(){
+  TeamController::create();
+});
+
+$routes->get('/team/:id', function($id) {
+    TeamController::show($id);
+});
+
+$routes->get('/team/:id/edit', function($id){
+  TeamController::edit($id);
+});
+
+$routes->post('/team/:id/edit', function($id){
+  TeamController::update($id);
+});
+
+$routes->post('/team/:id/destroy', function($id){
+  TeamController::destroy($id);
 });
 
 

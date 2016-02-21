@@ -29,10 +29,10 @@
         $errors[] = $field . "pitää olla merkkijono";
       }
       if(strlen($string) < $min && $min != 0) {
-        $errors[] = $field . " pitää olla vähintään " . $min . "merkkiä";
+        $errors[] = $field . " pitää olla vähintään " . $min . " merkkiä";
       }
       if(strlen($string) > $max && $max != 0) {
-        $errors[] = $field . " saa olla enintään " . $min . "merkkiä";
+        $errors[] = $field . " saa olla enintään " . $min . " merkkiä";
       }
       return $errors;
     }

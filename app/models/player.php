@@ -4,8 +4,8 @@ class Player extends BaseModel{
 
 public $id, $name, $password, $team_id;
 
-public function _construct($attributes) {
-	parent::_construct($attributes);
+public function __construct($attributes) {
+	parent::__construct($attributes);
   $this->validators = array('validate_name', 'validate_password');
 }
 

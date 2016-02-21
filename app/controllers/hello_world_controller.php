@@ -10,13 +10,12 @@
 
     public static function sandbox(){
       // Testaa koodiasi täällä
-      $jatka = new Player(array(
-        'name' => 'asd',
-        'password' => '123'));
-      //$errors = $jatka->errors();
+      $j = new Team(array(
+        'name' => 'asi',
+        'year' => '2015',
+        'city' => 'stadi'));
       // Kint-luokan dump-metodi tulostaa muuttujan arvon
-      $t = Player::authenticate('Teemu', 'joku123');
-      Kint::dump($t);
+      Kint::dump($j);
     }
 
     public static function login(){
