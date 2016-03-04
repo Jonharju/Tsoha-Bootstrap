@@ -68,6 +68,12 @@ public static function all(){
     $row = $query->fetch();
   }
 
+  public function updateTeam($team_id){
+    $query = DB::connection()->prepare('UPDATE Player SET team_id = :team_id WHERE id = :id');
+    $query->execute(array('id' => $this->id, 'team_id' => $team_id));
+    $row = $query->fetch();
+  }
+
   public function destroy(){
     $query = DB::connection()->prepare('DELETE FROM Player WHERE id = :id');
     $query->execute(array('id' => $this->id));

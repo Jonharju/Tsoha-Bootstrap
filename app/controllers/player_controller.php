@@ -9,8 +9,10 @@ class PlayerController extends BaseController{
 	}
 
 	public static function show($id){
+		self::check_logged_in();
 		$player = Player::find($id);
-		View::make('Player/show.html', array('player' => $player));
+		$team = Team::find($player->team_id);
+		View::make('Player/show.html', array('player' => $player, 'team' => $team));
 	}
 
 	public static function store(){	
@@ -33,6 +35,7 @@ class PlayerController extends BaseController{
 	}
 
 	public static function edit($id){
+		self::check_logged_in();
 		$Player = Player::find($id);
 		View::make('Player/edit.html', array('attributes' => $Player));
 	}

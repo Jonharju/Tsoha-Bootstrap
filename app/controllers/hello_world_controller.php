@@ -15,7 +15,10 @@
         'year' => '2015',
         'city' => 'stadi'));
       // Kint-luokan dump-metodi tulostaa muuttujan arvon
-      Kint::dump($j);
+      $id = '7';
+      $event = Event::find($id);
+      $team = Team::find($event->team_id);
+      Kint::dump($team);
     }
 
     public static function login(){

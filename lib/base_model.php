@@ -26,7 +26,7 @@
     public function validate_string_length($field, $string, $min, $max){
       $errors = array();
       if(!is_string($string)) {
-        $errors[] = $field . "pitää olla merkkijono";
+        $errors[] = $field . " pitää olla merkkijono";
       }
       if(strlen($string) < $min && $min != 0) {
         $errors[] = $field . " pitää olla vähintään " . $min . " merkkiä";
@@ -37,4 +37,23 @@
       return $errors;
     }
 
+    public function validate_int_length($field, $string, $min, $max){
+      $errors = array();
+      if(!ctype_digit($string)) {
+        $errors[] = $field . " pitää olla vuosiluku";
+      }
+      if(strlen($string) < $min && $min != 0) {
+        $errors[] = $field . " pitää olla " . $min . " merkkiä";
+      }
+      if(strlen($string) > $max && $max != 0) {
+        $errors[] = $field . " pitää olla " . $min . " merkkiä";
+      }
+    }
+      //public function validate_date($field, $string, $min, $max){
+      //$errors = array();
+      //if() {
+        //$errors[] = $field . " pitää olla muotoa YYYY-MM-DD";
+      //}
+      //return $errors;
+    //}
   }

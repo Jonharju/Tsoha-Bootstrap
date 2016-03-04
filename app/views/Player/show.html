@@ -17,13 +17,12 @@
       </tr>
       <form method="post" action="{{base_path}}/player/{{player.id}}/destroy" style="display: inline-block;">
   <button type="submit" class="btn btn-danger">Poista</button>
-</form>
     </thead>
 
     <tbody>
       <tr>
         <td>{{player.name}}</td>
-        <td>{{player.team_id}}</td>
+        <td><a href="{{base_path}}/team/{{team.id}}">{{team.name}}</a></td>
       </tr>
     </tbody>
   </table>

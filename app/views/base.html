@@ -39,7 +39,15 @@
         <div class="collapse navbar-collapse" id="navigation">
           <ul class="nav navbar-nav">
             <!-- Navigaation linkit -->
-            <li><a href="{{base_path}}">Etusivu</a></li>
+            <li><a href="{{base_path}}/player">Pelaajat</a></li>
+          </ul>
+          <ul class="nav navbar-nav">
+            <!-- Navigaation linkit -->
+            <li><a href="{{base_path}}/team">Joukkue</a></li>
+          </ul>
+          <ul class="nav navbar-nav">
+            <!-- Navigaation linkit -->
+            <li><a href="{{base_path}}/event">Tapahtuma</a></li>
           </ul>
           {% if user_logged_in %}
             <form class="navbar-form navbar-right" method="post" action="{{base_path}}/logout">

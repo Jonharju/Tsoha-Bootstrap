@@ -76,4 +76,36 @@ $routes->post('/team/:id/destroy', function($id){
   TeamController::destroy($id);
 });
 
+$routes->post('/team/:id/join', function($id){
+  TeamController::join($id);
+});
+
+$routes->get('/event', function() {
+  EventController::index();
+});
+
+$routes->post('/event', function(){
+  EventController::store();
+});
+
+$routes->get('/event/new', function(){
+  EventController::create();
+});
+
+$routes->get('/event/:id', function($id) {
+    EventController::show($id);
+});
+
+$routes->get('/event/:id/edit', function($id){
+  EventController::edit($id);
+});
+
+$routes->post('/event/:id/edit', function($id){
+  EventController::update($id);
+});
+
+$routes->post('/event/:id/destroy', function($id){
+  EventController::destroy($id);
+});
+
 

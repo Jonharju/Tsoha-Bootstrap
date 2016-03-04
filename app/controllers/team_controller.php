@@ -9,6 +9,7 @@ class TeamController extends BaseController{
 	}
 
 	public static function show($id){
+		self::check_logged_in();
 		$team = Team::find($id);
 		View::make('Team/show.html', array('team' => $team));
 	}
@@ -30,10 +31,12 @@ class TeamController extends BaseController{
 	}
 
 	public static function create(){
+		self::check_logged_in();
 		View::make('Team/new.html');
 	}
 
 	public static function edit($id){
+		self::check_logged_in();
 		$Team = Team::find($id);
 		View::make('Team/edit.html', array('attributes' => $Team));
 	}
@@ -63,5 +66,12 @@ class TeamController extends BaseController{
     $Team = new Team(array('id' => $id));
     $Team->destroy();
     Redirect::to('/team', array('message' => 'Joukkue on poistettu onnistuneesti!'));
+  }
+
+  public static function join($id){
+  	$player = self::get_user_logged_in();
+  	$Team = Team::find($id);
+  	$player->updateTeam($Team->id);
+  	Redirect::to('/team', array('message' => 'Sinut on lisätty joukkueseen'));
   }
 }

@@ -6,7 +6,7 @@ public $id, $name, $year, $city;
 
 public function __construct($attributes) {
 	parent::__construct($attributes);
-  $this->validators = array('validate_name', 'validate_city');
+  $this->validators = array('validate_name', 'validate_city', 'validate_year');
 }
 
 public function validate_name(){
@@ -15,6 +15,10 @@ public function validate_name(){
 
 public function validate_city(){
   return $this->validate_string_length("Kaupunki", $this->city, 3, 30);
+}
+
+public function validate_year(){
+  return $this->validate_int_length("Vuosi", $this->year,4,4);
 }
 
 public static function all(){
