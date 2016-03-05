@@ -18,7 +18,8 @@
       $id = '7';
       $event = Event::find($id);
       $team = Team::find($event->team_id);
-      Kint::dump($team);
+      $p = Event::findByTeam($id);
+      Kint::dump($p);
     }
 
     public static function login(){

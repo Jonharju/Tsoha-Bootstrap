@@ -11,7 +11,9 @@ class TeamController extends BaseController{
 	public static function show($id){
 		self::check_logged_in();
 		$team = Team::find($id);
-		View::make('Team/show.html', array('team' => $team));
+		$players = Player::findByTeam($id);
+		$events = Event::findByTeam($id);
+		View::make('Team/show.html', array('team' => $team, 'players' => $players, 'events' => $events));
 	}
 
 	public static function store(){	

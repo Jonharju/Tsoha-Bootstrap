@@ -32,4 +32,40 @@
       </tr>
     </tbody>
   </table>
+
+  <h2>Kaikki joukkueen pelaajat</h2>
+
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>Pelaajan nimi</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      {% for player in players %}
+      <tr>
+        <td><a href="{{base_path}}/player/{{player.id}}">{{player.name}}</a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <h1>Tapahtumat</h1>
+
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>Tapahtuma</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      {% for event in events %}
+      <tr>
+        <td><a href="{{base_path}}/event/{{event.id}}">{{event.description}}</a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
 {% endblock %}

@@ -55,6 +55,23 @@ public static function all(){
     return null;
   }
 
+  public static function findByTeam($team_id){
+    $query = DB::connection()->prepare('SELECT * FROM Player WHERE team_id = :team_id');
+    $query->execute(array('team_id' => $team_id));
+    $rows = $query->fetchAll();
+    $Player = array();
+
+    foreach($rows as $row){
+      $Player[] = new Player(array(
+        'id' => $row['id'],
+        'name' => $row['name'],
+        'password' => $row['password'],
+        'team_id' => $row['team_id']
+      ));
+    }
+    return $Player;
+  }
+
   public function save(){
     $query = DB::connection()->prepare('INSERT INTO Player (name, password) VALUES (:name, :password) RETURNING id');
     $query->execute(array('name' => $this->name, 'password' => $this->password));

@@ -61,6 +61,24 @@ public static function all(){
     return null;
   }
 
+  public static function findByTeam($team_id){
+    $query = DB::connection()->prepare('SELECT * FROM Event WHERE team_id = :team_id');
+    $query->execute(array('team_id' => $team_id));
+    $rows = $query->fetchAll();
+    $Event = array();
+
+    foreach($rows as $row){
+      $Event[] = new Event(array(
+        'id' => $row['id'],
+        'description' => $row['description'],
+        'time' => $row['time'],
+        'place' => $row['place'],
+        'team_id' => $row['team_id']
+      ));
+    }
+    return $Event;
+  }
+
   public function save(){
     $query = DB::connection()->prepare('INSERT INTO Event (description, time, place, team_id) VALUES (:description, :time, :place, :team_id) RETURNING id');
     $query->execute(array('description' => $this->description, 'time' => $this->time, 'place' => $this->place, 'team_id' => $this->team_id));
