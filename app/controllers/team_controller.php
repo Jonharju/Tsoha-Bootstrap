@@ -28,6 +28,7 @@ class TeamController extends BaseController{
     	View::make('/Team/new.html', array('errors' => $errors, 'team' => $Team));
     } else {
     	$Team->save();
+    	self::join($Team->id);
     	Redirect::to('/team/' . $Team->id, array('message' => 'Joukkue luotu!'));
 	}
 	}

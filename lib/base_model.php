@@ -48,6 +48,7 @@
       if(strlen($string) > $max && $max != 0) {
         $errors[] = $field . " pitää olla " . $min . " merkkiä";
       }
+      return $errors;
     }
       //public function validate_date($field, $string, $min, $max){
       //$errors = array();

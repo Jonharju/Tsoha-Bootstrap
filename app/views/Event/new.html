@@ -40,7 +40,8 @@
   <label>Joukkue</label>
   <select class="form-control" name="team">
     {% for team in teams %}
-      <option value="{{team.id}}">{{team.name}}</option>
+      {% if team.id == user_logged_in.team_id %} <option value="{{team.id}}">{{team.name}}</option>
+      {% endif %}
     {% endfor %}
   </select>
 </div>

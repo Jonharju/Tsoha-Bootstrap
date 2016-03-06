@@ -8,7 +8,12 @@
  
 {% if user_logged_in %}
 <h2> Kirjautunut käyttäjä: {{user_logged_in.name}}</h2>
-{% endif %}  
+{% endif %}
+
+{% if event.team_id == user_logged_in.team_id %} 
+  <th><a class="btn btn-default btn-sm" href="{{base_path}}/event/{{event.id}}/edit">Muokkaa</a></th>
+{% endif %}
+
   <table class="table table-striped table-bordered">
     <thead>
       <tr>
@@ -17,11 +22,13 @@
         <th>Paikka</th>
         <th>Joukue</th>
       </tr>
-      <form method="post" action="{{base_path}}/event/{{event.id}}/destroy" style="display: inline-block;">
-  <button type="submit" class="btn btn-danger">Poista</button>
-</form>
-    </thead>
 
+      {% if event.team_id == user_logged_in.team_id %} 
+      <form method="post" action="{{base_path}}/event/{{event.id}}/destroy" style="display: inline-block;">
+      <button type="submit" class="btn btn-danger">Poista</button>
+      </form>
+      {% endif %}
+    </thead>
     <tbody>
       <tr>
         <td>{{event.description}}</td>

@@ -17,7 +17,6 @@
     <thead>
       <tr>
         <th>Joukkueen nimi</th>
-        <th></th>
       </tr>
     </thead>
 
@@ -25,7 +24,6 @@
       {% for team in teams %}
       <tr>
         <td><a href="{{base_path}}/team/{{team.id}}">{{team.name}}</a></td>
-        <th><a class="btn btn-default btn-sm" href="{{base_path}}/team/{{team.id}}/edit">Muokkaa</a></th>
       </tr>
       {% endfor %}
     </tbody>

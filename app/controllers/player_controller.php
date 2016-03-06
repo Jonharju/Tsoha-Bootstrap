@@ -26,7 +26,7 @@ class PlayerController extends BaseController{
     	View::make('/Player/new.html', array('errors' => $errors, 'player' => $Player));
     } else {
     	$Player->save();
-    	Redirect::to('/player/' . $Player->id, array('message' => 'Pelaaja luotu!'));
+    	Redirect::to('/login', array('message' => 'Pelaaja luotu! Kirjaudu nyt sisään'));
 	}
 	}
 
@@ -63,7 +63,8 @@ class PlayerController extends BaseController{
 	public static function destroy($id){
     $Player = new Player(array('id' => $id));
     $Player->destroy();
-    Redirect::to('/player', array('message' => 'Peli on poistettu onnistuneesti!'));
+    $_SESSION['user'] = null;
+  	Redirect::to('/login', array('message' => 'Pelaajasi on poistettu!'));
   }
 
   public static function login(){
@@ -74,7 +75,7 @@ class PlayerController extends BaseController{
   	$params = $_POST;
   	$Player = Player::authenticate($params['name'], $params['password']);
   	if(!$Player) {
-  		View::make('Player/login.html', array('error' => 'väärä käyttäjätunnus tai salasana'));
+  		View::make('Player/login.html', array('error' => 'Väärä käyttäjätunnus tai salasana'));
   	} else {
   		$_SESSION['user'] = $Player->id; 
   		Redirect::to('/player', array('message' => 'Tervetuloa takaisin! ' .$Player->name));

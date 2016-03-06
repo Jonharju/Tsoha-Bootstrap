@@ -18,7 +18,6 @@
     <thead>
       <tr>
         <th>Pelaajan nimi</th>
-        <th></th>
       </tr>
     </thead>
 
@@ -26,7 +25,6 @@
       {% for player in players %}
       <tr>
         <td><a href="{{base_path}}/player/{{player.id}}">{{player.name}}</a></td>
-        <th><a class="btn btn-default btn-sm" href="{{base_path}}/player/{{player.id}}/edit">Muokkaa</a></th>
       </tr>
       {% endfor %}
     </tbody>
