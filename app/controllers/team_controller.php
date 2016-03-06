@@ -10,10 +10,12 @@ class TeamController extends BaseController{
 
 	public static function show($id){
 		self::check_logged_in();
+		$user = self::get_user_logged_in();
 		$team = Team::find($id);
-		$players = Player::findByTeam($id);
+		$players = Teammember::findByTeam($id);
 		$events = Event::findByTeam($id);
-		View::make('Team/show.html', array('team' => $team, 'players' => $players, 'events' => $events));
+		$member = Teammember::findByBoth($user->id, $team->id);
+		View::make('Team/show.html', array('team' => $team, 'players' => $players, 'events' => $events, 'member' => $member));
 	}
 
 	public static function store(){	
@@ -28,7 +30,9 @@ class TeamController extends BaseController{
     	View::make('/Team/new.html', array('errors' => $errors, 'team' => $Team));
     } else {
     	$Team->save();
-    	self::join($Team->id);
+    	$player = self::get_user_logged_in();
+    	$m = new Teammember(array('player_id' => $player->id, 'team_id' => $Team->id));
+  		$m->save();
     	Redirect::to('/team/' . $Team->id, array('message' => 'Joukkue luotu!'));
 	}
 	}
@@ -74,7 +78,8 @@ class TeamController extends BaseController{
   public static function join($id){
   	$player = self::get_user_logged_in();
   	$Team = Team::find($id);
-  	$player->updateTeam($Team->id);
+  	$m = new Teammember(array('player_id' => $player->id, 'team_id' => $Team->id));
+  	$m->save();
   	Redirect::to('/team', array('message' => 'Sinut on lisätty joukkueseen'));
   }
 }

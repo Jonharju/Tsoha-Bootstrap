@@ -28,8 +28,7 @@ public static function all(){
       $Player[] = new Player(array(
         'id' => $row['id'],
         'name' => $row['name'],
-        'password' => $row['password'],
-        'team_id' => $row['team_id']
+        'password' => $row['password']
       ));
     }
 
@@ -45,8 +44,7 @@ public static function all(){
       $Player = new Player(array(
         'id' => $row['id'],
         'name' => $row['name'],
-        'password' => $row['password'],
-        'team_id' => $row['team_id']
+        'password' => $row['password']
       ));
 
       return $Player;
@@ -55,22 +53,6 @@ public static function all(){
     return null;
   }
 
-  public static function findByTeam($team_id){
-    $query = DB::connection()->prepare('SELECT * FROM Player WHERE team_id = :team_id');
-    $query->execute(array('team_id' => $team_id));
-    $rows = $query->fetchAll();
-    $Player = array();
-
-    foreach($rows as $row){
-      $Player[] = new Player(array(
-        'id' => $row['id'],
-        'name' => $row['name'],
-        'password' => $row['password'],
-        'team_id' => $row['team_id']
-      ));
-    }
-    return $Player;
-  }
 
   public function save(){
     $query = DB::connection()->prepare('INSERT INTO Player (name, password) VALUES (:name, :password) RETURNING id');
@@ -82,12 +64,6 @@ public static function all(){
   public function update(){
     $query = DB::connection()->prepare('UPDATE Player SET name = :name, password = :password WHERE id = :id');
     $query->execute(array('id' => $this->id, 'name' => $this->name, 'password' => $this->password));
-    $row = $query->fetch();
-  }
-
-  public function updateTeam($team_id){
-    $query = DB::connection()->prepare('UPDATE Player SET team_id = :team_id WHERE id = :id');
-    $query->execute(array('id' => $this->id, 'team_id' => $team_id));
     $row = $query->fetch();
   }
 
@@ -104,8 +80,7 @@ public static function all(){
       $Player = new Player(array(
         'id' => $row['id'],
         'name' => $row['name'],
-        'password' => $row['password'],
-        'team_id' => $row['team_id']
+        'password' => $row['password']
       ));
       return $Player;
     }else{

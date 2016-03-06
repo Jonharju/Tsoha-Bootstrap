@@ -9,8 +9,7 @@ CREATE TABLE Team(
 CREATE TABLE Player(
 	id SERIAL PRIMARY KEY,
 	name varchar(30) NOT NULL,
-	password varchar(30) NOT NULL,
-	Team_id INTEGER REFERENCES Team(id)
+	password varchar(30) NOT NULL
 );
 
 
@@ -20,4 +19,10 @@ CREATE TABLE Event(
 	time DATE,
 	place varchar(30),
 	Team_id INTEGER REFERENCES Team(id)
+);
+
+CREATE TABLE Teammember(
+	id SERIAL PRIMARY KEY,
+	Player_id INTEGER REFERENCES Player(id) ON DELETE CASCADE,
+	Team_id INTEGER REFeRENCES Team(id) ON DELETE CASCADE
 );

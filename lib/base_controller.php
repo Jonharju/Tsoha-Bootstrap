@@ -18,5 +18,4 @@
       Redirect::to('/login', array('message' => 'Kirjaudu ensin sisään!'));
       }
     }
-
   }

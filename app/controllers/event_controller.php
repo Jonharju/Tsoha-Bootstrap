@@ -10,9 +10,11 @@ class EventController extends BaseController{
 
 	public static function show($id){
 		self::check_logged_in();
+		$user = self::get_user_logged_in();
 		$event = Event::find($id);
 		$team = Team::find($event->team_id);
-		View::make('Event/show.html', array('event' => $event, 'team' => $team));
+		$member = Teammember::findByBoth($user->id, $team->id);
+		View::make('Event/show.html', array('event' => $event, 'team' => $team, 'member' => $member));
 	}
 
 	public static function store(){	
@@ -35,7 +37,8 @@ class EventController extends BaseController{
 
 	public static function create(){
 		self::check_logged_in();
-		$teams = Team::all();
+		$p = self::get_user_logged_in();
+		$teams = Teammember::findByPlayer($p->id);
 		View::make('Event/new.html', array('teams' => $teams));
 	}
 

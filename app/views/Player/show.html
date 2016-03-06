@@ -18,7 +18,9 @@
     <thead>
       <tr>
         <th>Pelaajan nimi</th>
-        <th>Pelaajan joukkue</th>
+        {% for t in team %}
+        <th>Pelaajan joukkueet</th>
+        {% endfor %}
       </tr>
       
       {% if player.id == user_logged_in.id %}
@@ -31,7 +33,9 @@
     <tbody>
       <tr>
         <td>{{player.name}}</td>
-        <td><a href="{{base_path}}/team/{{team.id}}">{{team.name}}</a></td>
+        {% for t in team%}
+          <td><a href="{{base_path}}/team/{{t.id}}">{{t.name}}</a></td>
+        {% endfor %}
       </tr>
     </tbody>
   </table>

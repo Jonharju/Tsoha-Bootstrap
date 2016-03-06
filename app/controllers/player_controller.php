@@ -11,7 +11,7 @@ class PlayerController extends BaseController{
 	public static function show($id){
 		self::check_logged_in();
 		$player = Player::find($id);
-		$team = Team::find($player->team_id);
+		$team = Teammember::findByPlayer($player->id);
 		View::make('Player/show.html', array('player' => $player, 'team' => $team));
 	}
 

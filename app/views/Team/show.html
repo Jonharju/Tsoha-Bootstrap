@@ -10,7 +10,7 @@
 <h2> Kirjautunut käyttäjä: {{user_logged_in.name}}</h2>
 {% endif %}
 
-{% if team.id == user_logged_in.team_id %} 
+{% if member %} 
   <th><a class="btn btn-default btn-sm" href="{{base_path}}/team/{{team.id}}/edit">Muokkaa</a></th>
 {% endif %}
 
@@ -21,7 +21,7 @@
         <th>Perustusvuosi</th>
         <th>Kotikaupunki</th>
       </tr>
-      {% if team.id == user_logged_in.team_id %} <form method="post" action="{{base_path}}/team/{{team.id}}/destroy" style="display: inline-block;">
+      {% if member %} <form method="post" action="{{base_path}}/team/{{team.id}}/destroy" style="display: inline-block;">
       <button type="submit" class="btn btn-danger">Poista</button>
       </form>
       {% else %}

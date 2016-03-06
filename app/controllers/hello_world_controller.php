@@ -10,15 +10,8 @@
 
     public static function sandbox(){
       // Testaa koodiasi täällä
-      $j = new Team(array(
-        'name' => 'asi',
-        'year' => '2015',
-        'city' => 'stadi'));
       // Kint-luokan dump-metodi tulostaa muuttujan arvon
-      $id = '7';
-      $event = Event::find($id);
-      $team = Team::find($event->team_id);
-      $p = Event::findByTeam($id);
+      $m= Teammember::findByBoth(1,1);
       Kint::dump($p);
     }
 
