@@ -14,11 +14,11 @@ public function validate_description(){
 }
 
 public function validate_place(){
-  return $this->validate_string_length("Paikka", $this->time, 3, 30);
+  return $this->validate_string_length("Paikka", $this->place, 3, 30);
 }
 
 //public function validate_date(){
-  //return $this->validate_date("Aika",$this->place,8,8);
+  //return $this->validate_date($this->time);
 //}
 
 public static function all(){

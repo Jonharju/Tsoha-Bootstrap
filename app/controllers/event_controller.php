@@ -28,7 +28,9 @@ class EventController extends BaseController{
     ));
     $errors = $Event->errors();
     if(count($errors) != 0) {
-    	View::make('/Event/new.html', array('errors' => $errors, 'event' => $Event));
+    	$p = self::get_user_logged_in();
+    	$teams = Teammember::findByPlayer($p->id);
+    	View::make('/Event/new.html', array('errors' => $errors, 'event' => $Event, 'teams' => $teams));
     } else {
     	$Event->save();
     	Redirect::to('/event/' . $Event->id, array('message' => 'Tapahtuma luotu!'));

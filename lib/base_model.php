@@ -50,11 +50,11 @@
       }
       return $errors;
     }
-      //public function validate_date($field, $string, $min, $max){
-      //$errors = array();
-      //if() {
-        //$errors[] = $field . " pitää olla muotoa YYYY-MM-DD";
+    //public function validate_date($date){
+      //$v = new Valitron\Validator(array('date' => $date));
+      //$v->rule('date', 'date');
+      //if(!$v->validate()){
+        //return 'Päivämää väärää muotoa, tulee olla yyyy-mm-dd';
       //}
-      //return $errors;
     //}
   }
